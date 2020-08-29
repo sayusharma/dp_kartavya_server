@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DP Kartavya Server</string>
+    <string name="daily_insights">Daily Insights</string>
+    <string name="sign_up">Sign Up Requests</string>
+    <string name="police">Police Officers</string>
+    <string name="senior">Senior Citizens</string>
+</resources>
