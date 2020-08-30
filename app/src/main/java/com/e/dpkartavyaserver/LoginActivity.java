@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.e.dpkartavyaserver.Common.CurrentAdmin;
 import com.e.dpkartavyaserver.Model.Admin;
 import com.e.dpkartavyaserver.Preference.SaveSharedPreference;
 import com.google.firebase.database.DataSnapshot;
@@ -64,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if (dataSnapshot.child(email).exists()){
                                 user = dataSnapshot.child(email).getValue(Admin.class);
+                                CurrentAdmin.currentAdmin = user;
                                 if (user.getPass().equals(pass)){
                                     SaveSharedPreference.setUserName(getApplicationContext(),user.getMob());
                                     SaveSharedPreference.setPhoto(getApplicationContext(),user.getPhoto());

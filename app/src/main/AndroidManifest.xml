@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".DailyInsightsActivity"></activity>
+        <activity android:name=".SignUpRequestActivity"></activity>
+        <activity android:name=".SignUpRequestsActivity" />
+        <activity android:name=".DailyInsightsActivity" />
         <activity android:name=".DashActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SplashActivity">

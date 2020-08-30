@@ -43,7 +43,6 @@
             android:layout_gravity="end"
             android:layout_marginEnd="20dp"
             android:elevation="0dp"
-            android:onClick="onClickProfilePhoto"
             app:cardCornerRadius="20dp">
             <ImageView
                 android:id="@+id/profile_pic"
@@ -67,13 +66,13 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
-                <com.google.android.material.card.MaterialCardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     app:cardCornerRadius="10dp"
                     android:onClick="onClickDailyIn"
-                    android:layout_weight="1"
                     android:layout_marginRight="8dp"
-                    app:cardBackgroundColor="#D1CCDD"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#F6D2D2"
                     android:layout_height="wrap_content">
                     <RelativeLayout
                         android:padding="12dp"
@@ -98,11 +97,12 @@
                             android:textColor="@color/colorPrimary"
                             android:layout_height="wrap_content"/>
                     </RelativeLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     app:cardCornerRadius="10dp"
                     android:layout_weight="1"
+                    android:onClick="onClickSignUpRequests"
                     android:layout_marginLeft="8dp"
                     app:cardBackgroundColor="#F3D9B8"
                     android:layout_height="wrap_content">
@@ -129,14 +129,14 @@
                             android:textColor="@color/colorPrimary"
                             android:layout_height="wrap_content"/>
                     </RelativeLayout>
-                </com.google.android.material.card.MaterialCardView>
+                </androidx.cardview.widget.CardView>
             </LinearLayout>
             <LinearLayout
                 android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
-                <com.google.android.material.card.MaterialCardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     app:cardCornerRadius="10dp"
                     android:layout_weight="1"
@@ -166,8 +166,8 @@
                             android:textColor="@color/colorPrimary"
                             android:layout_height="wrap_content"/>
                     </RelativeLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     app:cardCornerRadius="10dp"
                     android:layout_weight="1"
@@ -197,7 +197,7 @@
                             android:textColor="@color/colorPrimary"
                             android:layout_height="wrap_content"/>
                     </RelativeLayout>
-                </com.google.android.material.card.MaterialCardView>
+                </androidx.cardview.widget.CardView>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
