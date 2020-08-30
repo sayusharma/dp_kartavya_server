@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+   app:cardUseCompatPadding="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/bgcolor"
+    app:cardCornerRadius="10dp"
+    android:elevation="8dp"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="90dp"
+            android:id="@+id/signUpPhoto"
+            android:layout_height="90dp"/>
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/signUpName"
+                android:textColor="@color/colorPrimary"
+                android:textSize="19sp"
+                android:text="Ayush Sharma"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/open_sans_bold"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginTop="2dp"
+                android:id="@+id/signUpMob"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:text="8077919303"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginTop="2dp"
+                android:id="@+id/signUpRank"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp"
+                android:text="ACP"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

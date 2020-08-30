@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bgcolor"
+    tools:context=".BasicDetailsFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/ic_baseline_account_box_24"
+                android:layout_width="200dp"
+                android:id="@+id/seniorPhoto"
+                android:layout_height="200dp"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/tenant_linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:onClick="onClickAddPhoto"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/add_image_design"
+            android:elevation="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/criminaltoolbar">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="8dp"
+                android:src="@drawable/addimage" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Add Image"
+                android:textColor="#1f2144"
+                android:textSize="16sp" />
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:text="Personal Details"
+            android:layout_marginStart="26dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"/>
+        <View
+            android:background="@color/colorPrimary"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12dp"
+            android:text="Full Name"
+            android:textColor="#1f2144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+        <EditText
+            android:id="@+id/seniorName"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="2dp"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginEnd="34dp"
+            android:inputType="textCapSentences"
+            android:backgroundTint="#bdbdbd"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter Full Name"
+            android:textColor="#1f2144"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="36dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/seniorName">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/open_sans"
+                android:text="Gender"
+                android:textColor="#1f2144"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/tenant_male"
+                app:cardBackgroundColor="#ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClickGenderTenant"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="2dp"
+                android:padding="3dp"
+                android:layout_marginBottom="2dp"
+                android:elevation="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView2"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginEnd="7dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="Male"
+                    android:id="@+id/tenant_male_text"
+                    android:textColor="#bdbdbd"
+                    android:textSize="16sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:onClick="onClickGenderTenant"
+                android:layout_marginTop="2dp"
+                app:cardBackgroundColor="#ffffff"
+                android:layout_marginBottom="2dp"
+                android:elevation="2dp"
+                android:id="@+id/tenant_female"
+                android:padding="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tenant_male"
+                app:layout_constraintStart_toEndOf="@+id/tenant_other"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="Female"
+                    android:id="@+id/tenant_female_text"
+                    android:textColor="#bdbdbd"
+                    android:textSize="16sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/tenant_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClickGenderTenant"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="2dp"
+                android:elevation="2dp"
+                android:padding="3dp"
+                app:cardBackgroundColor="#ffffff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:id="@+id/tenant_other_text"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="Other"
+                    android:textColor="#bdbdbd"
+                    android:textSize="16sp" />
+
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="33dp"
+            android:layout_marginTop="16sp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Date Of Birth"
+                android:textColor="#1f2144"
+                android:padding="10dp"/>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/dob_senior"
+                    android:hint="Set DOB"
+                    android:enabled="false"
+                    android:maxLines="1"
+                    android:textColorHint="#bdbdbd"
+                    android:paddingStart="16sp"
+                    android:layout_marginStart="16dp"
+                    android:textColor="#000000"
+                    android:background="@drawable/edit_text_design_off"
+                    android:padding="2dp"/>
+
+                <ImageView
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="24dp"
+                    android:id="@+id/dob_senior_relative"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_calendar" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:text="Address"
+            android:textSize="12dp"
+            android:textColor="#1f2144"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"></TextView>
+
+        <EditText
+            android:id="@+id/seniorAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:inputType="textCapSentences"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="34dp"
+            android:backgroundTint="#bdbdbd"
+            android:textColorHint="#bdbdbd"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter Full Address"
+            android:textColor="#1f2144"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview2" />
+
+        <TextView
+            android:id="@+id/textview3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:text="Mobile Number"
+            android:layout_marginTop="20dp"
+            android:textColor="#1f2144"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/criminal_address"></TextView>
+
+        <EditText
+            android:id="@+id/seniorMob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="10"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="2dp"
+            android:inputType="number"
+            android:layout_marginEnd="34dp"
+            android:backgroundTint="#bdbdbd"
+            android:maxLines="1"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter Mobile Number"
+            android:textColor="#1f2144"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview3" />
+        <TextView
+            android:id="@+id/textview4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:text="Email Address"
+            android:layout_marginTop="20dp"
+            android:textColor="#1f2144"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/criminal_address"></TextView>
+
+        <EditText
+            android:id="@+id/seniorEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="2dp"
+            android:inputType="textEmailAddress"
+            android:layout_marginEnd="34dp"
+            android:backgroundTint="#bdbdbd"
+            android:maxLines="1"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter Email Address"
+            android:textColor="#1f2144"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview3" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:text="Spouse Details"
+            android:layout_marginStart="26dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"/>
+        <View
+            android:background="@color/colorPrimary"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12dp"
+            android:text="Full Name"
+            android:textColor="#1f2144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+        <EditText
+            android:id="@+id/spouseName"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="32dp"
+            android:inputType="textCapSentences"
+            android:layout_marginTop="2dp"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginEnd="34dp"
+            android:backgroundTint="#bdbdbd"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter Spouse Full Name"
+            android:textColor="#1f2144"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="33dp"
+            android:layout_marginTop="16sp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Date Of Birth"
+                android:textColor="#1f2144"
+                android:padding="10dp"/>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/dob_spouse"
+                    android:hint="Set DOB"
+                    android:enabled="false"
+                    android:maxLines="1"
+                    android:textColorHint="#bdbdbd"
+                    android:paddingStart="16sp"
+                    android:layout_marginStart="16dp"
+                    android:textColor="#000000"
+                    android:background="@drawable/edit_text_design_off"
+                    android:padding="2dp"/>
+
+                <ImageView
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="24dp"
+                    android:id="@+id/dob_spouse_relative"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_calendar" />
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="33dp"
+            android:layout_marginTop="16sp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Wedding Date"
+                android:textColor="#1f2144"
+                android:padding="10dp"/>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/wedding"
+                    android:hint="Set Wedding Date"
+                    android:maxLines="1"
+                    android:enabled="false"
+                    android:textColorHint="#bdbdbd"
+                    android:paddingStart="16sp"
+                    android:layout_marginStart="16dp"
+                    android:textColor="#000000"
+                    android:background="@drawable/edit_text_design_off"
+                    android:padding="2dp"/>
+
+                <ImageView
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="24dp"
+                    android:id="@+id/wedding_relative"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_calendar" />
+            </RelativeLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:text="Additional Details"
+            android:layout_marginStart="26dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"/>
+        <View
+            android:background="@color/colorPrimary"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="3dp"
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="36dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view1">
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/open_sans"
+                android:text="Retired"
+                android:textColor="#1f2144"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/seniorYes"
+                app:cardBackgroundColor="#ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:onClick="onClickRetired"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:elevation="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView22"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/seniorYesText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginEnd="7dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="YES"
+                    android:textColor="#bdbdbd"
+                    android:textSize="16sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:padding="3dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:onClick="onClickRetired"
+                android:layout_marginTop="2dp"
+                app:cardBackgroundColor="#ffffff"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="2dp"
+                android:elevation="2dp"
+                android:id="@+id/seniorNo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/seniorYes"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="NO"
+                    android:id="@+id/seniorNoText"
+                    android:textColor="#bdbdbd"
+                    android:textSize="16sp" />
+
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView122"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12dp"
+            android:text="From"
+            android:textColor="#1f2144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+        <EditText
+            android:id="@+id/retiredFrom"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="32dp"
+            android:inputType="textCapSentences"
+            android:layout_marginTop="2dp"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginEnd="34dp"
+            android:backgroundTint="#bdbdbd"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Retired From"
+            android:textColor="#1f2144"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+        android:id="@+id/textView1223"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:textSize="12dp"
+        android:text="Year"
+        android:textColor="#1f2144"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+    <EditText
+        android:id="@+id/retiredYear"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="2dp"
+        android:textColorHint="#bdbdbd"
+        android:layout_marginEnd="34dp"
+        android:backgroundTint="#bdbdbd"
+        android:fontFamily="@font/open_sans_semibold"
+        android:hint="Retirement Year"
+        android:textColor="#1f2144"
+        android:maxLines="1"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/textView12233"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12dp"
+            android:text="Field of Specialization"
+            android:textColor="#1f2144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+        <EditText
+            android:id="@+id/field"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="2dp"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginEnd="34dp"
+            android:backgroundTint="#bdbdbd"
+            android:inputType="textCapSentences"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter Field of Specialization"
+            android:textColor="#1f2144"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/textView122333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12dp"
+            android:text="Children Details"
+            android:textColor="#1f2144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+        <EditText
+            android:id="@+id/childrenDetails"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="32dp"
+            android:inputType="textCapSentences"
+            android:layout_marginTop="2dp"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginEnd="34dp"
+            android:backgroundTint="#bdbdbd"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter Children Details"
+            android:textColor="#1f2144"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/textView1223333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12dp"
+            android:text="Residing With"
+            android:textColor="#1f2144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+        <EditText
+            android:id="@+id/residingWith"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="2dp"
+            android:inputType="textCapSentences"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginEnd="34dp"
+            android:backgroundTint="#bdbdbd"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter Residing With"
+            android:textColor="#1f2144"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/textView12323333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12dp"
+            android:text="Health"
+            android:textColor="#1f2144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+        <EditText
+            android:id="@+id/health"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="2dp"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginEnd="34dp"
+            android:inputType="textCapSentences"
+            android:backgroundTint="#bdbdbd"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter Health"
+            android:textColor="#1f2144"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/textView123223333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12dp"
+            android:text="L/P Visit"
+            android:textColor="#1f2144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+        <EditText
+            android:id="@+id/lpVisit"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="2dp"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginEnd="34dp"
+            android:backgroundTint="#bdbdbd"
+            android:inputType="textCapSentences"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter L/P Visit"
+            android:textColor="#1f2144"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/textView1232333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12dp"
+            android:text="Free Time"
+            android:textColor="#1f2144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+        <EditText
+            android:id="@+id/freeTime"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="2dp"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginEnd="34dp"
+            android:inputType="textCapSentences"
+            android:backgroundTint="#bdbdbd"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter Free Time"
+            android:textColor="#1f2144"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:text="Relative Details"
+            android:layout_marginStart="26dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"/>
+        <View
+            android:background="@color/colorPrimary"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <TextView
+            android:id="@+id/textView121"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12dp"
+            android:text="Full Name"
+            android:textColor="#1f2144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+        <EditText
+            android:id="@+id/relativeName"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="2dp"
+            android:textColorHint="#bdbdbd"
+            android:inputType="textCapSentences"
+            android:layout_marginEnd="34dp"
+            android:backgroundTint="#bdbdbd"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter Relative Full Name"
+            android:textColor="#1f2144"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/textView1321"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12dp"
+            android:text="Relation"
+            android:textColor="#1f2144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+        <EditText
+            android:id="@+id/relativeRelation"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="2dp"
+            android:textColorHint="#bdbdbd"
+            android:inputType="textCapSentences"
+            android:layout_marginEnd="34dp"
+            android:backgroundTint="#bdbdbd"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter Relation"
+            android:textColor="#1f2144"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/textView1231"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12dp"
+            android:text="Mobile Number"
+            android:textColor="#1f2144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+        <EditText
+            android:id="@+id/relativeMob"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="2dp"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginEnd="34dp"
+            android:inputType="number"
+            android:maxLength="10"
+            android:backgroundTint="#bdbdbd"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter Relative Mobile No."
+            android:textColor="#1f2144"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/textView12331"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12dp"
+            android:text="Address"
+            android:textColor="#1f2144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+        <EditText
+            android:id="@+id/relativeAdd"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="2dp"
+            android:inputType="textCapSentences"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginEnd="34dp"
+            android:backgroundTint="#bdbdbd"
+            android:fontFamily="@font/open_sans_semibold"
+            android:hint="Enter Relative Address"
+            android:textColor="#1f2144"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save and Next"
+            android:layout_marginTop="20dp"
+            android:textAllCaps="false"
+            android:layout_marginStart="33dp"
+            android:onClick="onClickSaveBasicDetails"
+            android:layout_marginEnd="32dp"
+            android:padding="6dp"
+            android:id="@+id/basicDetailsSubmit"
+            android:textSize="16sp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/colorPrimary"
+            android:textColor="#ffffff"/>
+    </LinearLayout>
+</ScrollView>

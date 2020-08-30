@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="#F6EBEB"
+    android:elevation="5dp"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/verText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="3dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Officer Mob : "
+                android:textColor="@color/colorPrimary" />
+            <TextView
+                android:id="@+id/todayVisitOffMob"
+                android:layout_width="wrap_content"
+                android:layout_toRightOf="@id/verText1"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="8077919303"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_toLeftOf="@id/todayVisitTime"
+                android:id="@+id/verText2"
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Time: "
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginRight="3dp"
+                android:id="@+id/todayVisitTime"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="21:02:25"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+        <View
+            android:layout_marginTop="3dp"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:id="@+id/cardLinear"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/logo"
+                android:layout_width="90dp"
+                android:id="@+id/todayVisitPhoto"
+                android:layout_height="90dp" />
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/todayVisitName"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:text="AYUSH SHarma"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/todayVisitMob"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="8077919303"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/todayVisitAddr"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="64 gopal nagar,mathura"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_marginTop="3dp"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <RelativeLayout
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/verText31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="3dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Visited By : "
+                android:textColor="@color/colorPrimary" />
+            <TextView
+                android:id="@+id/todayVisitOffName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1dp"
+                android:layout_toRightOf="@id/verText31"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Ayush Sharma"
+                android:textColor="@color/colorPrimary" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/verTextas31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="3dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Visit Notes : "
+                android:textColor="@color/colorPrimary" />
+            <TextView
+                android:id="@+id/todayVisitNotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1dp"
+                android:layout_toRightOf="@id/verTextas31"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Ayush Sharma"
+                android:textColor="@color/colorPrimary" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
