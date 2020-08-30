@@ -6,4 +6,31 @@
     <string name="senior">Senior Citizens</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="A">SECURITY CHECKS FOR HOUSE SAFETY</string>
+
+    <string name="Aa">1. ACCESS CONTROL SECURITY</string>
+    <string name="Aaa">A. Door Chain\t\t</string>
+    <string name="Aab">B. Magic Eye/Door Viewer\t\t</string>
+    <string name="Aac">C. Electronic Lock with LCD Screen System\t\t</string>
+    <string name="Aad">D. House Burglar Alarm System\t\t</string>
+    <string name="Aae">E. CCTV with recording\t\t</string>
+    <string name="Aaf">F. Intruder Detection System\t\t</string>
+    <string name="Aag">G. Other House Safety and Securtiy Gadgets\t\t</string>
+    <string name="Ab">2. GENERAL HOUSEHOLD SECURITY FEATURES</string>
+    <string name="Aba">A. Condition of door locking system\t\t</string>
+    <string name="Abb">B. Security Iron Grill on window and ventilator\t\t</string>
+    <string name="Abc">C. Added Security Locks/DeadLock on rear/back side gate\t\t</string>
+    <string name="Abd">D. Venerability of entry from roof/ventilator window/backside\t\t</string>
+    <string name="Abe">E. If AC/Cooler is fixed from outside,whether, having safety grill outside\t\t</string>
+    <string name="Abf">F. Condition of security fencing\t\t</string>
+    <string name="Abg">G. Lighting condition(outside) on entrance,porches\t\t</string>
+    <string name="B">SECURITY CHECKS OF SURROUNDINGS</string>
+    <string name="Ba">A. Deployments of security guard(As in case of Apartment)\t\t</string>
+    <string name="Bb">B. External surrounding security feature adopted by RWA such as Gates/CCTV/Guards\t\t</string>
+    <string name="Bc">C. Having provision of Cross Bell/Alarm System with neighbour for any SOS message in case of emergency\t\t</string>
+    <string name="Bd">D. Whether neighbours/RWA are in regular touch\t\t</string>
+    <string name="Be">E. Whether BEAT police officer is regularly visiting the house\t\t</string>
+    <string name="Bf">F. Lighting in surrounding Area/Street Lighting\t\t</string>
+    <string name="register"><u>REGISTER NOW</u></string>
 </resources>

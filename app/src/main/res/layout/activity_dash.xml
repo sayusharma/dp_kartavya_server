@@ -139,6 +139,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     app:cardCornerRadius="10dp"
+                    android:onClick="onClickPoliceOfficer"
                     android:layout_weight="1"
                     android:layout_marginRight="8dp"
                     app:cardBackgroundColor="#C7EDDB"

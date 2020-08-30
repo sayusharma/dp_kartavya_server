@@ -36,4 +36,8 @@ public class DashActivity extends AppCompatActivity {
         Intent intent = new Intent(DashActivity.this,SignUpRequestActivity.class);
         startActivity(intent);
     }
+    public void onClickPoliceOfficer(View view){
+        Intent intent = new Intent(DashActivity.this,PoliceOfficersActivity.class);
+        startActivity(intent);
+    }
 }

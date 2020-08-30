@@ -9,11 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".SignUpRequestActivity"></activity>
-        <activity android:name=".SignUpRequestsActivity" />
+        <activity android:name=".PreviewSnrCznActivity"></activity>
+        <activity android:name=".PoliceOfficersActivity" />
+        <activity android:name=".SignUpRequestActivity" />
+        <activity android:name=".VerifyActivity" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.Theme.AppCompat" />
         <activity android:name=".DailyInsightsActivity" />
         <activity android:name=".DashActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".MyVerificationActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
