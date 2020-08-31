@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    app:cardUseCompatPadding="true"
+    android:elevation="5dp"
+    app:cardCornerRadius="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/bgcolor"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:padding="7dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/snrCznImg"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="8dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/snrCznName"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Ayush Sharma"
+                android:textSize="18sp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_width="wrap_content"
+                android:id="@+id/snrCznMob"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="8077919303"
+                android:textSize="16sp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

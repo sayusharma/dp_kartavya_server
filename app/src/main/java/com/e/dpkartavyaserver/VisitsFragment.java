@@ -132,6 +132,6 @@ public class VisitsFragment extends Fragment implements VisitAdapter.OnItemClick
 
     @Override
     public void onClick(int position) {
-        Toast.makeText(getContext(),"CAN'T ACCESS",Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getContext(),"CAN'T ACCESS",Toast.LENGTH_SHORT).show();
     }
 }

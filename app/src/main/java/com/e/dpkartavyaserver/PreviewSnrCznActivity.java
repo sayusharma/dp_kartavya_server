@@ -56,10 +56,6 @@ public class PreviewSnrCznActivity extends AppCompatActivity {
 // Attempt to star an activity that can handle the Intent
         startActivity(mapIntent);
     }
-    public void onClickBackPreviewSnr(View view){
-        Intent intent = new Intent(PreviewSnrCznActivity.this,PoliceOfficersActivity.class);
-        startActivity(intent);
-    }
     private void setTextViews() {
         snrName.setText(snr.getBasicDetails().getPersonalDetails().getName());
         snrAddress.setText(snr.getBasicDetails().getPersonalDetails().getAddress());

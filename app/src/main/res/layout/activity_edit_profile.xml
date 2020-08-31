@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgcolor"
+    tools:context=".EditProfileActivity">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardBackgroundColor="@color/bgcolor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/visittoolbar"
+        app:cardElevation="5dp"
+        android:layout_height="50dp">
+        <RelativeLayout
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:onClick="onClickBackEditProfile"
+                android:layout_marginLeft="6dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Edit Profile"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <ScrollView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/visittoolbar"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:paddingBottom="30dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/ic_baseline_account_box_24"
+                    android:layout_width="200dp"
+                    android:id="@+id/euserPhoto"
+                    android:layout_height="200dp"/>
+            </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/tenant_linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="40dp"
+                android:onClick="eonClickUploadProfilePhoto"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/add_image_design"
+                android:elevation="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/criminaltoolbar">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="8dp"
+                    android:src="@drawable/addimage" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="Edit Image"
+                    android:textColor="#1f2144"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="16dp"
+                android:textSize="12dp"
+                android:text="Full Name"
+                android:textColor="#1f2144"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"></TextView>
+
+            <EditText
+                android:id="@+id/euserName"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="2dp"
+                android:textColorHint="#bdbdbd"
+                android:layout_marginEnd="34dp"
+                android:inputType="textCapSentences"
+                android:backgroundTint="#bdbdbd"
+                android:fontFamily="@font/open_sans_semibold"
+                android:hint="Enter Full Name"
+                android:textColor="#1f2144"
+                android:maxLines="1"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Changes"
+                android:layout_marginTop="20dp"
+                android:textAllCaps="false"
+                android:layout_marginStart="33dp"
+                android:onClick="eonClickRegisterNowDetails"
+                android:layout_marginEnd="32dp"
+                android:padding="6dp"
+                android:textSize="16sp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorPrimary"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
