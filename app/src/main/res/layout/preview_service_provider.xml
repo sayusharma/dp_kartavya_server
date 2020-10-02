@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="#fff"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/itemId"
+        android:layout_marginLeft="6dp"
+        android:layout_alignParentStart="true"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:text="#"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/open_sans_bold"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:text="1"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/pserPos"
+            android:fontFamily="@font/open_sans_bold"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="DRIVER"
+            android:id="@+id/pserType"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/open_sans_bold"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text=" : "
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/open_sans_bold"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Ayush Sharma"
+            android:id="@+id/pserName"
+            android:layout_marginLeft="4dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@id/itemId"
+        android:id="@+id/itemId2"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Ayush Sharma"
+            android:id="@+id/pserAddr"
+            android:layout_marginLeft="30dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Ayush Sharma"
+            android:id="@+id/pserVerStatus"
+            android:layout_marginLeft="30dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Ayush Sharma"
+            android:id="@+id/pserVerNotes"
+            android:layout_marginLeft="30dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <View
+        android:layout_below="@id/itemId2"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="1dp"/>
+</RelativeLayout>
