@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.e.dpkartavyaserver.Model.User;
-import com.e.dpkartavyaserver.Model.Visit;
 import com.e.dpkartavyaserver.R;
 import com.squareup.picasso.Picasso;
 
@@ -40,9 +39,13 @@ public class PoliceAdapter extends RecyclerView.Adapter<PoliceAdapter.OrderViewH
         holder.name.setText(orders.get(position).getName());
         holder.rank.setText(orders.get(position).getRank());
         holder.mob.setText(orders.get(position).getMob());
-        Picasso.get()
-                .load(orders.get(position).getPhoto())
-                .into(holder.img);
+        try {
+            Picasso.get()
+                    .load(orders.get(position).getPhoto())
+                    .into(holder.img);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override

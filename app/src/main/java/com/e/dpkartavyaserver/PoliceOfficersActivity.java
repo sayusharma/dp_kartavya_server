@@ -10,15 +10,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.e.dpkartavyaserver.Adapter.PoliceAdapter;
 import com.e.dpkartavyaserver.Common.CurrentUser;
 import com.e.dpkartavyaserver.Model.User;
+import com.e.dpkartavyaserver.Model.VerifySnr;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +30,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class PoliceOfficersActivity extends AppCompatActivity implements PoliceAdapter.OnItemClickListener {
     private FirebaseDatabase firebaseDatabase;
@@ -36,6 +39,7 @@ public class PoliceOfficersActivity extends AppCompatActivity implements PoliceA
     private EditText editText;
     private ImageView cancelName,cancelMob;
     private Context context;
+    private Spinner spinner;
     private ArrayList<User> cuurentArrayList;
     private PoliceAdapter policeAdapter;
     private ArrayList<User> arrayList;
@@ -47,61 +51,15 @@ public class PoliceOfficersActivity extends AppCompatActivity implements PoliceA
         firebaseDatabase = FirebaseDatabase.getInstance();
         recyclerView = findViewById(R.id.policeOffRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        spinner = findViewById(R.id.policePoliceOfficers);
         editText = findViewById(R.id.searchByOffNameEditText);
         mobEditText = findViewById(R.id.searchByOffMobEditText);
-        cancelMob = findViewById(R.id.cancelMob);
-        cancelName = findViewById(R.id.cancelName);
-        editText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.toString().equals("")){
-                    mobEditText.setEnabled(true);
-                    cancelName.setVisibility(View.INVISIBLE);
-                }
-                else{
-                    mobEditText.setEnabled(false);
-                    cancelName.setVisibility(View.VISIBLE);
-                }
-                filterResults(s);
-
-
-            }
-        });
-        mobEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.toString().equals("")){
-                    editText.setEnabled(true);
-                    cancelMob.setVisibility(View.INVISIBLE);
-                }
-                else {
-                    cancelMob.setVisibility(View.VISIBLE);
-                    editText.setEnabled(false);
-                }
-                filterResultsForMob(s);
-            }
-        });
         recyclerView.setHasFixedSize(true);
+        ArrayAdapter<CharSequence> adapters = ArrayAdapter.createFromResource(getApplicationContext(),
+                R.array.police_station, R.layout.spinner_item_text);
+        adapters.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapters);
+        spinner.setSelection(1);
         arrayList = new ArrayList<>();
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
@@ -122,8 +80,6 @@ public class PoliceOfficersActivity extends AppCompatActivity implements PoliceA
                 }
                 else {
                     setAdapter();
-                    //Toast.makeText(getContext(),"IN2",Toast.LENGTH_SHORT).show();
-
                     progressDialog.dismiss();
                 }
             }
@@ -132,13 +88,68 @@ public class PoliceOfficersActivity extends AppCompatActivity implements PoliceA
             }
         });
     }
-    public void onClickCancelName(View view){
-        cancelName.setVisibility(View.INVISIBLE);
-        editText.setText("");
-    }
-    public void onClickCancelMob(View view){
-        cancelMob.setVisibility(View.INVISIBLE);
-        mobEditText.setText("");
+    public void onClickPoliceOfficersApply(View view){
+        if(spinner.getSelectedItemPosition()==0){
+            Toast.makeText(getApplicationContext(),"SELECT POLICE STATION",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            final ArrayList<User> arrayList1;
+            if(spinner.getSelectedItemPosition()==1){
+                arrayList1 = (ArrayList<User>) arrayList.clone();
+                if (TextUtils.isEmpty(editText.getText()) && TextUtils.isEmpty(mobEditText.getText())) {
+                    filterResults("",arrayList1);
+                } else if (TextUtils.isEmpty(editText.getText())) {
+                    String str2 = mobEditText.getText().toString();
+                    filterResultsForMob(str2,arrayList1);
+                } else if (TextUtils.isEmpty(mobEditText.getText())) {
+                    String str = editText.getText().toString();
+                    filterResults(str,arrayList1);
+                } else {
+                    String str = editText.getText().toString();
+                    filterResults(str,arrayList1);
+                    String str2 = mobEditText.getText().toString();
+                    filterResultsForMob(str2,arrayList1);
+                }
+            }
+            else {
+                final String s = spinner.getSelectedItem().toString();
+                arrayList1 = new ArrayList<>();
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                            User user = dataSnapshot1.getValue(User.class);
+                            if (user.getPolice().equals(s)) {
+                              //  Toast.makeText(getApplicationContext(),""+user.getPolice(),Toast.LENGTH_SHORT).show();
+                                arrayList1.add(user);
+                                //Toast.makeText(getApplicationContext(),""+arrayList1.size(),Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        if (TextUtils.isEmpty(editText.getText()) && TextUtils.isEmpty(mobEditText.getText())) {
+                            filterResults("",arrayList1);
+                        } else if (TextUtils.isEmpty(editText.getText())) {
+                            String str2 = mobEditText.getText().toString();
+                            filterResultsForMob(str2,arrayList1);
+                        } else if (TextUtils.isEmpty(mobEditText.getText())) {
+                            String str = editText.getText().toString();
+                            filterResults(str,arrayList1);
+                        } else {
+                            String str = editText.getText().toString();
+                            filterResults(str,arrayList1);
+                            String str2 = mobEditText.getText().toString();
+                            filterResultsForMob(str2,arrayList1);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        }
+
     }
     private void setAdapter() {
         policeAdapter = new PoliceAdapter(getApplicationContext(), arrayList,this);
@@ -148,7 +159,7 @@ public class PoliceOfficersActivity extends AppCompatActivity implements PoliceA
 
     }
 
-    private void filterResultsForMob(CharSequence s) {
+    private void filterResultsForMob(String s,ArrayList<User> arrayList) {
         ArrayList<User> filterList = new ArrayList<>();
         for(User v:arrayList){
             if (v.getMob().contains(s)){
@@ -166,7 +177,7 @@ public class PoliceOfficersActivity extends AppCompatActivity implements PoliceA
         recyclerView.setAdapter(seniorAdapter);
     }
 
-    private void filterResults(CharSequence s) {
+    private void filterResults(String s,ArrayList<User> arrayList) {
         ArrayList<User> filterList = new ArrayList<>();
         for(User v:arrayList){
             if (v.getName().toLowerCase().contains(s)){
@@ -174,11 +185,10 @@ public class PoliceOfficersActivity extends AppCompatActivity implements PoliceA
             }
         }
         if (filterList.isEmpty()){
-            cuurentArrayList = arrayList;
-            //Toast.makeText(getApplicationContext(),"NO SENIOR CITIZENS FOUND",Toast.LENGTH_SHORT).show();
+            cuurentArrayList = (ArrayList<User>) arrayList.clone();
         }
         else{
-            cuurentArrayList = filterList;
+            cuurentArrayList = (ArrayList<User>) filterList.clone();
         }
         PoliceAdapter seniorAdapter = new PoliceAdapter(getApplicationContext(),filterList,this);
         recyclerView.setAdapter(seniorAdapter);

@@ -1,8 +1,17 @@
 package com.e.dpkartavyaserver.Model;
 
 public class Visit {
-    private String name,mob,addr,photo,off_mob,off_name,date,time,notes;
+    private String police,name,photo,notes,complaint,off_mob,off_name,date,time,mob;
+    private Loc loc;
     public Visit(){}
+
+    public String getPolice() {
+        return police;
+    }
+
+    public void setPolice(String police) {
+        this.police = police;
+    }
 
     public String getName() {
         return name;
@@ -12,28 +21,28 @@ public class Visit {
         this.name = name;
     }
 
-    public String getMob() {
-        return mob;
-    }
-
-    public void setMob(String mob) {
-        this.mob = mob;
-    }
-
-    public String getAddr() {
-        return addr;
-    }
-
-    public void setAddr(String addr) {
-        this.addr = addr;
-    }
-
     public String getPhoto() {
         return photo;
     }
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public String getComplaint() {
+        return complaint;
+    }
+
+    public void setComplaint(String complaint) {
+        this.complaint = complaint;
     }
 
     public String getOff_mob() {
@@ -68,23 +77,33 @@ public class Visit {
         this.time = time;
     }
 
-    public String getNotes() {
-        return notes;
+    public String getMob() {
+        return mob;
     }
 
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
-    public Visit(String name, String mob, String addr, String photo, String off_mob, String off_name, String date, String time, String notes) {
-        this.name = name;
+    public void setMob(String mob) {
         this.mob = mob;
-        this.addr = addr;
+    }
+
+    public Loc getLoc() {
+        return loc;
+    }
+
+    public void setLoc(Loc loc) {
+        this.loc = loc;
+    }
+
+    public Visit(String police, String name, String photo, String notes, String complaint, String off_mob, String off_name, String date, String time, String mob, Loc loc) {
+        this.police = police;
+        this.name = name;
         this.photo = photo;
+        this.notes = notes;
+        this.complaint = complaint;
         this.off_mob = off_mob;
         this.off_name = off_name;
         this.date = date;
         this.time = time;
-        this.notes = notes;
+        this.mob = mob;
+        this.loc = loc;
     }
 }

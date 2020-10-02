@@ -3,21 +3,32 @@ package com.e.dpkartavyaserver;
 import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.e.dpkartavyaserver.Adapter.ChildrenAdapter;
+import com.e.dpkartavyaserver.Common.CurrentChildrenList;
 import com.e.dpkartavyaserver.Common.CurrentSenior;
+import com.e.dpkartavyaserver.Model.Children;
 import com.e.dpkartavyaserver.Model.VerifySnr;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -26,15 +37,20 @@ import java.util.Calendar;
  * create an instance of this fragment.
  */
 public class BasicDetailsFragment extends Fragment {
-    private EditText dob_senior,dob_spouse,wedding;
+    private EditText dob_senior,dob_spouse,wedding,name,mob;
     private DatePickerDialog pickerSeniorDialog,pickerSpouseDialog,pickerWeddingDialog;
     private ImageView relativeLayout,relSpouse,relWedding;
     private VerifySnr snr;
     private String gender;
+    private Spinner childrenSpinner;
+    private ArrayList<Children> arrayList;
+    private Button addChildren;
+    private RecyclerView recyclerView;
+    private ChildrenAdapter childrenAdapter;
     private String retired;
     private ImageView snrPhoto;
-    private EditText snrName,snrAddress,snrMob,snrEmail,spouseName,snrRetired,
-            snrRetiredFrom,snrRetiredYear,snrField,snrChildren,snrResidingWith,snrHealth,snrLPVisit,snrFreeTime,snrRelativeName,
+    private EditText snrName,snrAddress,snrMob,snrEmail,spouseName,
+            snrRetiredFrom,snrRetiredYear,snrField,snrResidingWith,snrHealth,snrFreeTime,snrRelativeName,
             snrRelativeRelation,snrRelativeMob,snrRelativeAddr;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -139,8 +155,8 @@ public class BasicDetailsFragment extends Fragment {
         snrAddress=view.findViewById(R.id.seniorAddress);snrMob=view.findViewById(R.id.seniorMob);
         snrEmail=view.findViewById(R.id.seniorEmail);spouseName=view.findViewById(R.id.spouseName);
         snrRetiredFrom=view.findViewById(R.id.retiredFrom);snrRetiredYear=view.findViewById(R.id.retiredYear);
-        snrField=view.findViewById(R.id.field);snrChildren=view.findViewById(R.id.childrenDetails);snrResidingWith=view.findViewById(R.id.residingWith);
-        snrHealth=view.findViewById(R.id.health);snrLPVisit=view.findViewById(R.id.lpVisit);snrFreeTime=view.findViewById(R.id.freeTime);
+        snrField=view.findViewById(R.id.field);snrResidingWith=view.findViewById(R.id.residingWith);
+        snrHealth=view.findViewById(R.id.health);snrFreeTime=view.findViewById(R.id.freeTime);
         snrRelativeName=view.findViewById(R.id.relativeName);snrRelativeRelation=view.findViewById(R.id.relativeRelation);
         snrRelativeMob=view.findViewById(R.id.relativeMob);snrRelativeAddr=view.findViewById(R.id.relativeAdd);
         snrMob.setEnabled(false);
@@ -152,11 +168,10 @@ public class BasicDetailsFragment extends Fragment {
         snrRetiredFrom.setText(snr.getBasicDetails().getAdditionalDetails().getFrom());
         snrRetiredYear.setText(snr.getBasicDetails().getAdditionalDetails().getYear());
         snrField.setText(snr.getBasicDetails().getAdditionalDetails().getField());
-        snrChildren.setText(snr.getBasicDetails().getAdditionalDetails().getChildren());
+        snrFreeTime.setText(snr.getBasicDetails().getAdditionalDetails().getAvailable_hours());
         snrResidingWith.setText(snr.getBasicDetails().getAdditionalDetails().getResidingWith());
         snrHealth.setText(snr.getBasicDetails().getAdditionalDetails().getHealth());
-        snrLPVisit.setText(snr.getBasicDetails().getAdditionalDetails().getLpVisit());
-        snrFreeTime.setText(snr.getBasicDetails().getAdditionalDetails().getFreeTime());
+
         snrRelativeName.setText(snr.getBasicDetails().getRelativeDetails().getName());
         snrRelativeAddr.setText(snr.getBasicDetails().getRelativeDetails().getAddress());
         snrRelativeMob.setText(snr.getBasicDetails().getRelativeDetails().getMob());
@@ -180,12 +195,62 @@ public class BasicDetailsFragment extends Fragment {
         snrPhoto = view.findViewById(R.id.seniorPhoto);
         gender = snr.getBasicDetails().getPersonalDetails().getGender();
         retired = snr.getBasicDetails().getAdditionalDetails().getRetired();
-        Picasso.get()
-                .load(snr.getBasicDetails().getPersonalDetails().getPhoto())
-                .into(snrPhoto);
+        try {
+            Picasso.get()
+                    .load(snr.getBasicDetails().getPersonalDetails().getPhoto())
+                    .into(snrPhoto);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        if(snr.getBasicDetails().getChildrenDetails() == null){
+            arrayList = new ArrayList<>();
+        }
+       else{
+            arrayList = snr.getBasicDetails().getChildrenDetails();
+        }
+        recyclerView = view.findViewById(R.id.childrenRecycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        childrenAdapter = new ChildrenAdapter(getContext(),arrayList);
+        recyclerView.setAdapter(childrenAdapter);
+        CurrentChildrenList.currentChildrenList = arrayList;
         onClickRetired(view);
         onClickGenderTenant(view);
+        addChildren = view.findViewById(R.id.btnAddChildren);
+        dob_spouse = view.findViewById(R.id.dob_spouse);
+        relSpouse = view.findViewById(R.id.dob_spouse_relative);
+        childrenSpinner = view.findViewById(R.id.childrenResidence);
+        ArrayAdapter<CharSequence> adapters = ArrayAdapter.createFromResource(getActivity(),
+                R.array.children_residence, R.layout.spinner_item_text);
+        adapters.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        childrenSpinner.setAdapter(adapters);
+        name = view.findViewById(R.id.childrenName);
+        mob = view.findViewById(R.id.childrenMob);
         initialise(view);
+        addChildren.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (TextUtils.isEmpty(name.getText()) || TextUtils.isEmpty(mob.getText())){
+                    Toast.makeText(getActivity(),"FIELDS CANNOT BE EMPTY",Toast.LENGTH_SHORT).show();
+                }
+                else if(mob.getText().length()!=10){
+                    Toast.makeText(getActivity(),"MOB NO CANNOT BE LESS THAN 10 DIGITS",Toast.LENGTH_SHORT).show();
+                }
+                else if(childrenSpinner.getSelectedItemPosition()==0){
+                    Toast.makeText(getActivity(),"PLEASE SELECT RESIDENCE",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Children children = new Children(name.getText().toString(),mob.getText().toString(),childrenSpinner.getSelectedItem().toString());
+                    name.setText("");
+                    mob.setText("");
+                    childrenSpinner.setSelection(0);
+                    arrayList.add(children);
+                   // Toast.makeText(getContext(),children.getName(),Toast.LENGTH_SHORT).show();
+                    childrenAdapter = new ChildrenAdapter(getContext(),arrayList);
+                    recyclerView.setAdapter(childrenAdapter);
+                    CurrentChildrenList.currentChildrenList = arrayList;
+                }
+            }
+        });
         dob_senior = view.findViewById(R.id.dob_senior);
         relativeLayout = view.findViewById(R.id.dob_senior_relative);
         wedding = view.findViewById(R.id.wedding);

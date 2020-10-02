@@ -92,6 +92,7 @@ public class SignUpRequestActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         removeItem(clickItem);
+                        addToRejected(clickItem);
                         dialog.dismiss();
                     }
                 });
@@ -100,12 +101,16 @@ public class SignUpRequestActivity extends AppCompatActivity {
     }
     public void removeItem(User item){
         databaseReference.child(item.getMob()).removeValue();
+    }
+    public void addToRejected(User item){
         DatabaseReference databaseReference1 = firebaseDatabase.getReference("rejected");
         databaseReference1.child(item.getMob()).setValue(item);
     }
     public void addToUsers(User item){
         DatabaseReference databaseReference1 = firebaseDatabase.getReference("users");
         databaseReference1.child(item.getMob()).setValue(item);
+        DatabaseReference databaseReference2 = firebaseDatabase.getReference("check");
+        databaseReference2.child(item.getMob()).setValue("asas");
     }
     public void onClickBackSignUp(View view){
         Intent intent = new Intent(SignUpRequestActivity.this,DashActivity.class);

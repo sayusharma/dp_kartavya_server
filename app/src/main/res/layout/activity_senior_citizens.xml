@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
     <RelativeLayout
         android:layout_marginTop="10dp"
         android:layout_marginLeft="15dp"
@@ -57,16 +58,6 @@
             android:background="@drawable/search_edittext"
             android:layout_width="match_parent"
             android:layout_height="35dp"/>
-        <ImageView
-            android:visibility="invisible"
-            android:onClick="onClickCancelName"
-            android:id="@+id/cancelName"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:layout_width="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_baseline_cancel"
-            android:layout_height="wrap_content"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_marginTop="15dp"
@@ -91,16 +82,6 @@
             android:background="@drawable/search_edittext"
             android:layout_width="match_parent"
             android:layout_height="35dp"/>
-        <ImageView
-            android:visibility="invisible"
-            android:onClick="onClickCancelMob"
-            android:id="@+id/cancelMob"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:layout_width="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_baseline_cancel"
-            android:layout_height="wrap_content"/>
     </RelativeLayout>
     <LinearLayout
         android:layout_marginLeft="20dp"
@@ -112,11 +93,11 @@
         android:layout_below="@id/editRel2"
         android:layout_height="wrap_content">
         <RelativeLayout
+            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:textSize="16sp"
-                android:text="Whether have:"
+                android:text="Whether has:"
                 android:fontFamily="@font/open_sans_semibold"
                 android:textColor="@color/colorPrimary"
                 android:layout_width="wrap_content"
@@ -130,7 +111,6 @@
                 android:src="@drawable/ic_baseline_reset"
                 android:layout_height="wrap_content"/>
         </RelativeLayout>
-
         <LinearLayout
             android:layout_margin="5dp"
             android:layout_width="match_parent"
@@ -142,7 +122,6 @@
                 android:onClick="onClickFilters"
                 app:cardCornerRadius="20dp"
                 android:id="@+id/cctvCard"
-                android:alpha="0.99"
                 app:cardElevation="5dp"
                 android:layout_height="wrap_content">
                 <RelativeLayout
@@ -271,7 +250,18 @@
                         android:layout_height="wrap_content"/>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
+            <Button
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:textColor="@color/bgcolor"
+                android:background="@color/colorPrimary"
+                android:text="Search"
+                android:onClick="onClickSearchSenior"
+                android:textAllCaps="false"
+                android:layout_alignParentEnd="true"
+                android:layout_height="wrap_content"/>
         </RelativeLayout>
+
     </LinearLayout>
     <View
         android:layout_marginTop="5dp"

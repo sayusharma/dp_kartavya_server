@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import com.e.dpkartavyaserver.Common.CurrentAdmin;
 import com.e.dpkartavyaserver.Preference.SaveSharedPreference;
@@ -16,7 +18,7 @@ import com.squareup.picasso.Picasso;
 
 public class MyProfile extends Activity {
     private Button logout,edit,change,cancel;
-    private TextView name,design;
+    private TextView name,desn,police;
     private ImageView imageView;
     private String string;
     private FirebaseDatabase firebaseDatabase;
@@ -28,29 +30,28 @@ public class MyProfile extends Activity {
        // firebaseDatabase = FirebaseDatabase.getInstance();
        // databaseReference = firebaseDatabase.getReference("users");
         logout = findViewById(R.id.btnLogout);
-        edit = findViewById(R.id.btnEditProfile);
-        change = findViewById(R.id.btnChangePassword);
         name = findViewById(R.id.profile_name);
-        design = findViewById(R.id.designation);
+        desn = findViewById(R.id.designation);
+        police = findViewById(R.id.police);
+        desn.setText(CurrentAdmin.currentAdmin.getRank());
+        police.setText(CurrentAdmin.currentAdmin.getPolice());
         imageView = findViewById(R.id.profilePhoto);
         //Toast.makeText(getApplicationContext(),""+CurrentUser.currentUser.getName()+CurrentUser.currentUser.getPhoto(),Toast.LENGTH_LONG).show();
-        Picasso.get().load(CurrentAdmin.currentAdmin.getPhoto()).into(imageView);
+        try {
+            Picasso.get()
+                    .load(CurrentAdmin.currentAdmin.getPhoto())
+                    .into(imageView);
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(),"FAILED TO LOAD PROFILE PHOTO",Toast.LENGTH_LONG).show();
+        }
         name.setText(CurrentAdmin.currentAdmin.getName());
 
-    }
-    public void onClickEditProfile(View view){
-        Intent intent = new Intent(MyProfile.this,EditProfileActivity.class);
-        startActivity(intent);
     }
     public void onClickLogout(View view){
         //SaveSharedPreference.setUserName(getApplicationContext(),"null");
         SaveSharedPreference.clearPreference(this);
         CurrentAdmin.currentAdmin = null;
         Intent intent = new Intent(MyProfile.this,LoginActivity.class);
-        startActivity(intent);
-    }
-    public void onClickChangePassword(View view){
-        Intent intent = new Intent(MyProfile.this,ChangePasswordActivity.class);
         startActivity(intent);
     }
     public void onClickCancelProfile(View view){

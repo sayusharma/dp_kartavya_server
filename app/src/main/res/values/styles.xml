@@ -6,13 +6,6 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <string-array name="verification">
-        <item>Select Verification Status</item>
-        <item>Verified</item>
-        <item>Not verified</item>
-        <item>Part-Time</item>
-        <item>Verification Pending</item>
-        <item>NONE</item>
-    </string-array>
+
 
 </resources>

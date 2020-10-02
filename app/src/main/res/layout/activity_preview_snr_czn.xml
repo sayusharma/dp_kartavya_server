@@ -46,13 +46,14 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="100dp"
                     android:layout_margin="5dp"
+                    app:cardBackgroundColor="#ffffff"
                     android:id="@+id/cardSnrPhoto"
                     app:cardCornerRadius="10dp"
                     android:layout_height="100dp">
                     <ImageView
                         android:layout_width="match_parent"
                         android:id="@+id/snrPhoto"
-                        android:src="@drawable/ic_baseline_account_box_24"
+                        android:src="@drawable/logo"
                         android:layout_height="match_parent"/>
                 </androidx.cardview.widget.CardView>
                 <LinearLayout
@@ -63,33 +64,34 @@
                     android:layout_toRightOf="@id/cardSnrPhoto"
                     android:layout_marginLeft="15dp"
                     android:layout_height="wrap_content">
-                   <androidx.cardview.widget.CardView
-                       android:layout_width="match_parent"
-                       app:cardCornerRadius="10dp"
-                       app:cardElevation="5dp"
-                       android:onClick="onClickEditVerify"
-                       app:cardBackgroundColor="@color/colorPrimary"
-                       android:layout_marginRight="15dp"
-                       android:layout_height="match_parent">
-                       <RelativeLayout
-                           android:padding="6dp"
-                           android:layout_width="match_parent"
-                           android:layout_height="match_parent">
-                           <ImageView
-                               android:layout_marginLeft="5dp"
-                               android:layout_width="wrap_content"
-                               android:src="@drawable/ic_baseline_edit_24"
-                               android:layout_height="wrap_content"/>
-                           <TextView
-                               android:layout_width="wrap_content"
-                               android:text="Edit Verification"
-                               android:textSize="16sp"
-                               android:fontFamily="@font/open_sans_bold"
-                               android:textColor="@color/bgcolor"
-                               android:layout_centerInParent="true"
-                               android:layout_height="wrap_content"/>
-                       </RelativeLayout>
-                   </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        android:onClick="onClickEditVerify"
+                        app:cardBackgroundColor="@color/colorPrimary"
+                        android:layout_marginRight="15dp"
+                        android:layout_height="match_parent">
+                        <RelativeLayout
+                            android:padding="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_marginLeft="5dp"
+                                android:layout_centerVertical="true"
+                                android:layout_width="wrap_content"
+                                android:src="@drawable/ic_baseline_edit_24"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="Edit Verification"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/open_sans_bold"
+                                android:textColor="@color/bgcolor"
+                                android:layout_centerInParent="true"
+                                android:layout_height="wrap_content"/>
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         app:cardCornerRadius="10dp"
@@ -100,18 +102,46 @@
                         android:layout_marginRight="15dp"
                         android:layout_height="match_parent">
                         <RelativeLayout
-                            android:padding="6dp"
+                            android:padding="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
                             <ImageView
                                 android:layout_marginLeft="5dp"
                                 android:layout_width="wrap_content"
-                                android:src="@drawable/ic_baseline_pin_drop_24"
+                                android:src="@drawable/ic_baseline_pin_drop_20"
                                 android:layout_height="wrap_content"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:text="Geo Location"
-                                android:textSize="16sp"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/open_sans_bold"
+                                android:textColor="@color/bgcolor"
+                                android:layout_centerInParent="true"
+                                android:layout_height="wrap_content"/>
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        android:layout_marginTop="8dp"
+                        android:onClick="onClickVisitHistory"
+                        app:cardBackgroundColor="@color/colorPrimary"
+                        android:layout_marginRight="15dp"
+                        android:layout_height="match_parent">
+                        <RelativeLayout
+                            android:padding="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_marginLeft="5dp"
+                                android:layout_width="wrap_content"
+                                android:src="@drawable/ic_baseline_visit"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="Visit History"
+                                android:textSize="14sp"
                                 android:fontFamily="@font/open_sans_bold"
                                 android:textColor="@color/bgcolor"
                                 android:layout_centerInParent="true"
@@ -369,6 +399,24 @@
             <TextView
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
+                android:text="Children Details"
+                android:layout_marginStart="26dp"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content"/>
+            <View
+                android:background="@color/colorPrimary"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:id="@+id/previewChildrenRecycler"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
                 android:text="Additional Details"
                 android:layout_marginStart="26dp"
                 android:textColor="@color/colorPrimary"
@@ -478,29 +526,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:id="@+id/textView115"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Children Details : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrChildren"
-                    android:layout_toRightOf="@id/textView115"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="Something"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
                     android:id="@+id/textView116"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -547,36 +572,13 @@
                 android:layout_marginTop="8dp"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:id="@+id/textView118"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="L/P Visit : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrLPVisit"
-                    android:layout_toRightOf="@id/textView118"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="Residing.."
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
                     android:id="@+id/textView119"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="36dp"
                     android:fontFamily="@font/open_sans_semibold"
                     android:textSize="12dp"
-                    android:text="Free Time : "
+                    android:text="Available : "
                     android:textColor="#1f2144" />
                 <TextView
                     android:id="@+id/snrFreeTime"
@@ -591,7 +593,7 @@
             <TextView
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
-                android:text="Relative Details"
+                android:text="Other than Children"
                 android:layout_marginStart="26dp"
                 android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"/>
@@ -707,786 +709,10 @@
                 android:gravity="center_horizontal"
                 android:background="@color/colorPrimary"
                 android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:text="DRIVER"
-                android:layout_marginStart="26dp"
-                android:fontFamily="@font/open_sans_bold"
-                android:textColor="@color/colorPrimary"
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:id="@+id/previewServiceRecycler"
                 android:layout_height="wrap_content"/>
-            <View
-                android:background="@color/colorPrimary"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
-            <RelativeLayout
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView011"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Full Name : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrDriverName"
-                    android:layout_toRightOf="@id/textView011"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="Ayush Sharma"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView022"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Address : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrDriverAddr"
-                    android:layout_toRightOf="@id/textView022"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/21/2018"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView033"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Verification Status : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrDriverVerStatus"
-                    android:layout_toRightOf="@id/textView033"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/2/2012"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_marginTop="8dp"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/textView044"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:fontFamily="@font/open_sans_semibold"
-                android:textSize="12dp"
-                android:text="Verification Form No. : "
-                android:textColor="#1f2144" />
-            <TextView
-                android:id="@+id/snrDriverVerNo"
-                android:layout_toRightOf="@id/textView044"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_bold"
-                android:textSize="13sp"
-                android:text="21/2/2012"
-                android:textColor="#1f2144" />
-        </RelativeLayout>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:text="WATCHMAN"
-                android:layout_marginStart="26dp"
-                android:fontFamily="@font/open_sans_bold"
-                android:textColor="@color/colorPrimary"
-                android:layout_height="wrap_content"/>
-            <View
-                android:background="@color/colorPrimary"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
-            <RelativeLayout
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView0111"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Full Name : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrWatchmanName"
-                    android:layout_toRightOf="@id/textView0111"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="Ayush Sharma"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView0222"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Address : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrWatchmanAddr"
-                    android:layout_toRightOf="@id/textView0222"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/21/2018"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView0333"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Verification Status : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrWatchmanVerStatus"
-                    android:layout_toRightOf="@id/textView0333"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/2/2012"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView0444"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Verification Form No. : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrWatchmanVerNo"
-                    android:layout_toRightOf="@id/textView0444"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/2/2012"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:text="SERVANT"
-                android:layout_marginStart="26dp"
-                android:fontFamily="@font/open_sans_bold"
-                android:textColor="@color/colorPrimary"
-                android:layout_height="wrap_content"/>
-            <View
-                android:background="@color/colorPrimary"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
-            <RelativeLayout
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView01111"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Full Name : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrServantName"
-                    android:layout_toRightOf="@id/textView01111"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="Ayush Sharma"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView02222"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Address : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrServantAddr"
-                    android:layout_toRightOf="@id/textView02222"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/21/2018"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView03333"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Verification Status : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrServantVerStatus"
-                    android:layout_toRightOf="@id/textView03333"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/2/2012"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView04444"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Verification Form No. : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrServantVerNo"
-                    android:layout_toRightOf="@id/textView04444"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/2/2012"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:text="TENANT"
-                android:layout_marginStart="26dp"
-                android:fontFamily="@font/open_sans_bold"
-                android:textColor="@color/colorPrimary"
-                android:layout_height="wrap_content"/>
-            <View
-                android:background="@color/colorPrimary"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
-            <RelativeLayout
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView011111"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Full Name : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrTenantName"
-                    android:layout_toRightOf="@id/textView011111"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="Ayush Sharma"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView022222"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Address : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrTenantAddr"
-                    android:layout_toRightOf="@id/textView022222"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/21/2018"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView033333"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Verification Status : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrTenantVerStatus"
-                    android:layout_toRightOf="@id/textView033333"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/2/2012"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView044444"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Verification Form No. : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrTenantVerNo"
-                    android:layout_toRightOf="@id/textView044444"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/2/2012"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:text="SWEEPER"
-                android:layout_marginStart="26dp"
-                android:fontFamily="@font/open_sans_bold"
-                android:textColor="@color/colorPrimary"
-                android:layout_height="wrap_content"/>
-            <View
-                android:background="@color/colorPrimary"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
-            <RelativeLayout
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView0011"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Full Name : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrSweeperName"
-                    android:layout_toRightOf="@id/textView0011"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="Ayush Sharma"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView0022"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Address : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrSweeperAddr"
-                    android:layout_toRightOf="@id/textView0022"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/21/2018"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView0033"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Verification Status : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrSweeperVerStatus"
-                    android:layout_toRightOf="@id/textView0033"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/2/2012"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView0044"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Verification Form No. : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrSweeperVerNo"
-                    android:layout_toRightOf="@id/textView0044"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/2/2012"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:text="CAR CLEANER"
-                android:layout_marginStart="26dp"
-                android:fontFamily="@font/open_sans_bold"
-                android:textColor="@color/colorPrimary"
-                android:layout_height="wrap_content"/>
-            <View
-                android:background="@color/colorPrimary"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
-            <RelativeLayout
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView00011"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Full Name : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrCarCleanerName"
-                    android:layout_toRightOf="@id/textView00011"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="Ayush Sharma"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView00022"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Address : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrCarCleanerAddr"
-                    android:layout_toRightOf="@id/textView00022"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/21/2018"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView00033"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Verification Status : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrCarCleanerVerStatus"
-                    android:layout_toRightOf="@id/textView00033"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/2/2012"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView00044"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Verification Form No. : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrCarCleanerVerNo"
-                    android:layout_toRightOf="@id/textView00044"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/2/2012"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:text="OTHERS"
-                android:layout_marginStart="26dp"
-                android:fontFamily="@font/open_sans_bold"
-                android:textColor="@color/colorPrimary"
-                android:layout_height="wrap_content"/>
-            <View
-                android:background="@color/colorPrimary"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
-            <RelativeLayout
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView10010"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Type of Service Provided : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrOthersService"
-                    android:layout_toRightOf="@id/textView10010"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="Ayush Sharma"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                  android:layout_marginTop="8dp"
-                    android:layout_width="match_parent"
-                     android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView10011"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Full Name : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrOthersName"
-                    android:layout_toRightOf="@id/textView10011"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="Ayush Sharma"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView10022"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Address : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrOthersAddr"
-                    android:layout_toRightOf="@id/textView10022"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/21/2018"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView10033"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Verification Status : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrOthersVerStatus"
-                    android:layout_toRightOf="@id/textView10033"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/2/2012"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/textView10044"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:textSize="12dp"
-                    android:text="Verification Form No. : "
-                    android:textColor="#1f2144" />
-                <TextView
-                    android:id="@+id/snrOthersVerNo"
-                    android:layout_toRightOf="@id/textView10044"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:textSize="13sp"
-                    android:text="21/2/2012"
-                    android:textColor="#1f2144" />
-            </RelativeLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:fontFamily="@font/open_sans_semibold"

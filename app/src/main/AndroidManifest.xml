@@ -9,26 +9,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".SeniorCitizensActivity"></activity>
+        <activity android:name=".NotVisitedActivity"></activity>
+        <activity android:name=".VisitCalenderActivity" />
+        <activity android:name=".VisitInsightsActivity" />
+        <activity android:name=".VisitHistoryActivity" />
+        <activity android:name=".VerificationInsightsActivity" />
+        <activity android:name=".VerifyActivity" />
+        <activity android:name=".SeniorCitizensActivity" />
         <activity android:name=".PreviewSnrCznActivity" />
         <activity android:name=".PoliceOfficersActivity" />
         <activity android:name=".SignUpRequestActivity" />
-        <activity android:name=".ChangePasswordActivity" />
-        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".MyVerificationActivity" />
         <activity
             android:name=".MyProfile"
             android:parentActivityName=".DashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".VerifyActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity android:name=".DailyInsightsActivity" />
         <activity android:name=".DashActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MyVerificationActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,5 +39,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 </manifest>

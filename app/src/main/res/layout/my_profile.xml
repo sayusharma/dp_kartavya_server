@@ -51,6 +51,7 @@
         android:layout_marginTop="16dp"
         android:text="Ayush Sharma"
         android:textSize="20dp"
+        android:textColor="@color/bgcolor"
         android:fontFamily="@font/open_sans_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,6 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Administrator"
+        android:textColor="@color/bgcolor"
         android:id="@+id/designation"
         android:layout_marginTop="3dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,6 +69,18 @@
         android:fontFamily="@font/open_sans_semibold"
         android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@+id/profile_name" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Administrator"
+        android:textColor="@color/bgcolor"
+        android:id="@+id/police"
+        android:layout_marginTop="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/designation" />
 
     <View
         android:id="@+id/view"
@@ -74,7 +88,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="25dp"
         android:background="#ffffff"
-        app:layout_constraintTop_toBottomOf="@+id/designation" />
+        app:layout_constraintTop_toBottomOf="@+id/police" />
     <LinearLayout
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,42 +96,6 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/btnEditProfile"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginStart="66dp"
-            android:layout_marginEnd="66dp"
-            android:onClick="onClickEditProfile"
-            android:layout_marginBottom="56dp"
-            android:background="@drawable/logout_button_design"
-            android:capitalize="sentences"
-            android:padding="10dp"
-            android:text="EDIT PROFILE"
-            android:textSize="16sp"
-            android:textColor="#1f2144"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="Deprecated" />
-        <Button
-            android:id="@+id/btnChangePassword"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginStart="66dp"
-            android:layout_marginEnd="66dp"
-            android:layout_marginBottom="56dp"
-            android:background="@drawable/logout_button_design"
-            android:capitalize="sentences"
-            android:padding="10dp"
-            android:onClick="onClickChangePassword"
-            android:text="Reset Password"
-            android:textSize="16sp"
-            android:textColor="#1f2144"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="Deprecated" />
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"

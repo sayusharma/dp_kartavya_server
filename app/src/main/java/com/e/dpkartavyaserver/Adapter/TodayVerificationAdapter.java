@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.e.dpkartavyaserver.Model.VerifySnr;
 import com.e.dpkartavyaserver.R;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -24,7 +25,6 @@ public class TodayVerificationAdapter extends RecyclerView.Adapter<TodayVerifica
         this.orders = orders;
         this.onItemClickListener = onItemClickListener;
     }
-
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,9 +40,14 @@ public class TodayVerificationAdapter extends RecyclerView.Adapter<TodayVerifica
         holder.addr.setText(orders.get(position).getBasicDetails().getPersonalDetails().getAddress());
         holder.time.setText(orders.get(position).getMoreDetails().getTime());
         holder.mob.setText(orders.get(position).getBasicDetails().getPersonalDetails().getMob());
-        Picasso.get()
-                .load(orders.get(position).getBasicDetails().getPersonalDetails().getPhoto())
-                .into(holder.img);
+        holder.date.setText(orders.get(position).getMoreDetails().getDate());
+        try {
+            Picasso.get()
+                    .load(orders.get(position).getBasicDetails().getPersonalDetails().getPhoto())
+                    .into(holder.img);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -51,7 +56,7 @@ public class TodayVerificationAdapter extends RecyclerView.Adapter<TodayVerifica
     }
 
     public class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView name,mob,addr,time,offMob,offName;
+        TextView name,mob,addr,time,offMob,offName,date;
         OnItemClickListener onItemClickListener;
         ImageView img;
         public OrderViewHolder(@NonNull View itemView,OnItemClickListener itemClickListener) {
@@ -60,6 +65,7 @@ public class TodayVerificationAdapter extends RecyclerView.Adapter<TodayVerifica
             mob =  (TextView) itemView.findViewById(R.id.todayVerMob);
             img =  (ImageView) itemView.findViewById(R.id.todayVerPhoto);
             offName = itemView.findViewById(R.id.todayVerOffName);
+            date = itemView.findViewById(R.id.todayVerDate);
            // offName = itemView.findViewById(R.id.todayVerOffName);
             time = itemView.findViewById(R.id.todayVerTime);
             addr = itemView.findViewById(R.id.todayVerAddr);
@@ -77,4 +83,5 @@ public class TodayVerificationAdapter extends RecyclerView.Adapter<TodayVerifica
     public interface OnItemClickListener{
         void onClick(int position);
     }
+
 }

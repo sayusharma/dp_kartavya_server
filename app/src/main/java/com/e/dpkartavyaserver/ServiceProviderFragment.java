@@ -1,17 +1,27 @@
 package com.e.dpkartavyaserver;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.e.dpkartavyaserver.Adapter.ServiceAdapter;
 import com.e.dpkartavyaserver.Common.CurrentSenior;
+import com.e.dpkartavyaserver.Common.CurrentServiceProviderList;
+import com.e.dpkartavyaserver.Model.ServiceProvider;
 import com.e.dpkartavyaserver.Model.VerifySnr;
+
+import java.util.ArrayList;
 
 
 /**
@@ -25,16 +35,13 @@ public class ServiceProviderFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private EditText driverName,driverAddr,driverVerStatus,driverVerNo;
-    private EditText watchmanName,watchmanAddr,watchmanVerStatus,watchmanVerNo;
-    private EditText servantName,servantAddr,servantVerStatus,servantVerNo;
-    private EditText tenantName,tenantAddr,tenantVerStatus,tenantVerNo;
-    private EditText sweeperName,sweeperAddr,sweeperVerStatus,sweeperVerNo;
-    private EditText carName,carAddr,carVerStatus,carVerNo;
     private VerifySnr snr;
-    private EditText otherName,otherAddr,otherVerStatus,otherVerNo,otherServType;
-    private Spinner driverSpinner,watchmanSpinner,tenantSpinner,servantSpinner,sweeperSpinner,carcleanerSpinner,otherSpinner;
-
+    private ServiceAdapter serviceAdapter;
+    private ArrayList<ServiceProvider> arrayList;
+    private EditText name,addr,notes;
+    private Spinner verStatus,serType;
+    private RecyclerView recyclerView;
+    private Button addService;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -60,48 +67,7 @@ public class ServiceProviderFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    public void initialise(View view){
-        driverName=view.findViewById(R.id.driverName);driverAddr=view.findViewById(R.id.driverAdd);driverVerNo=view.findViewById(R.id.driverVerNo);
-        watchmanName=view.findViewById(R.id.WatchmanName);watchmanAddr=view.findViewById(R.id.WatchmanAdd);watchmanVerNo=view.findViewById(R.id.WatchmanVerNo);
-        servantName=view.findViewById(R.id.ServantName);servantAddr=view.findViewById(R.id.ServantAdd);servantVerNo=view.findViewById(R.id.ServantVerNo);
-        tenantName=view.findViewById(R.id.TenantName);tenantAddr=view.findViewById(R.id.TenantAdd);tenantVerNo=view.findViewById(R.id.TenantVerNo);
-        sweeperName=view.findViewById(R.id.SweeperName);sweeperAddr=view.findViewById(R.id.SweeperAdd);sweeperVerNo=view.findViewById(R.id.SweeperVerNo);
-        carName=view.findViewById(R.id.CarCleanerName);carAddr=view.findViewById(R.id.CarCleanerAdd);carVerNo=view.findViewById(R.id.CarCleanerVerNo);
-        otherServType=view.findViewById(R.id.OthersSerType);otherName=view.findViewById(R.id.OthersName);otherAddr=view.findViewById(R.id.OthersAdd);
-        otherVerNo=view.findViewById(R.id.OthersVerNo);
 
-
-        driverName.setText(snr.getServiceProviders().getDriver().getName());
-        driverAddr.setText(snr.getServiceProviders().getDriver().getAddress());
-        //driverVerStatus.setText(snr.getServiceProviders().getDriver().getVerStatus());
-        driverVerNo.setText(snr.getServiceProviders().getDriver().getVerNo());
-        watchmanName.setText(snr.getServiceProviders().getWatchman().getName());
-        watchmanAddr.setText(snr.getServiceProviders().getWatchman().getAddress());
-       // watchmanVerStatus.setText(snr.getServiceProviders().getWatchman().getVerStatus());
-        watchmanVerNo.setText(snr.getServiceProviders().getWatchman().getVerNo());
-
-        servantName.setText(snr.getServiceProviders().getServant().getName());
-        servantAddr.setText(snr.getServiceProviders().getServant().getAddress());
-        //servantVerStatus.setText(snr.getServiceProviders().getServant().getVerStatus());
-        servantVerNo.setText(snr.getServiceProviders().getServant().getVerNo());
-        tenantName.setText(snr.getServiceProviders().getTenant().getName());
-        tenantAddr.setText(snr.getServiceProviders().getTenant().getAddress());
-       // tenantVerStatus.setText(snr.getServiceProviders().getTenant().getVerStatus());
-        tenantVerNo.setText(snr.getServiceProviders().getTenant().getVerNo());
-        sweeperName.setText(snr.getServiceProviders().getSweeper().getName());
-        sweeperAddr.setText(snr.getServiceProviders().getSweeper().getAddress());
-       // sweeperVerStatus.setText(snr.getServiceProviders().getSweeper().getVerStatus());
-        sweeperVerNo.setText(snr.getServiceProviders().getSweeper().getVerNo());
-        carName.setText(snr.getServiceProviders().getCarCleaner().getName());
-        carAddr.setText(snr.getServiceProviders().getCarCleaner().getAddress());
-       // carVerStatus.setText(snr.getServiceProviders().getCarCleaner().getVerStatus());
-        carVerNo.setText(snr.getServiceProviders().getCarCleaner().getVerNo());
-        otherName.setText(snr.getServiceProviders().getOthers().getName());
-        otherAddr.setText(snr.getServiceProviders().getOthers().getAddress());
-       // otherVerStatus.setText(snr.getServiceProviders().getOthers().getVerStatus());
-        otherVerNo.setText(snr.getServiceProviders().getOthers().getVerNo());
-        otherServType.setText(snr.getServiceProviders().getOthers().getSerType());
-    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,49 +83,58 @@ public class ServiceProviderFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_service_provider, container, false);
         snr = CurrentSenior.currentSenior;
-        initialise(view);
-        driverSpinner = view.findViewById(R.id.driverVerStatus);
-        watchmanSpinner = view.findViewById(R.id.WatchmanVerStatus);
-        tenantSpinner = view.findViewById(R.id.TenantVerStatus);
-        servantSpinner = view.findViewById(R.id.ServantVerStatus);
-        sweeperSpinner = view.findViewById(R.id.SweeperVerStatus);
-        carcleanerSpinner = view.findViewById(R.id.CarCleanerVerStatus);
-        otherSpinner = view.findViewById(R.id.OthersVerStatus);
+        name = view.findViewById(R.id.serName);
+        addr = view.findViewById(R.id.serAddress);
+        recyclerView = view.findViewById(R.id.serviceProvideRecycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        if(snr.getServiceProviders()== null){
+            arrayList = new ArrayList<>();
+        }
+        else{
+            arrayList = snr.getServiceProviders();
+        }
+        serviceAdapter = new ServiceAdapter(getContext(), arrayList);
+        recyclerView.setAdapter(serviceAdapter);
+        CurrentServiceProviderList.currentServiceList = arrayList;
+        notes = view.findViewById(R.id.verNotes);
+        verStatus = view.findViewById(R.id.verStatus);
+        serType = view.findViewById(R.id.serviceType);
+        addService = view.findViewById(R.id.btnAddServiceProvider);
         ArrayAdapter<CharSequence> adapters = ArrayAdapter.createFromResource(getActivity(),
                 R.array.verification, R.layout.spinner_item_text);
         adapters.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        driverSpinner.setAdapter(adapters);
-        watchmanSpinner.setAdapter(adapters);
-        tenantSpinner.setAdapter(adapters);
-        servantSpinner.setAdapter(adapters);
-        sweeperSpinner.setAdapter(adapters);
-        carcleanerSpinner.setAdapter(adapters);
-        otherSpinner.setAdapter(adapters);
-        driverSpinner.setSelection(decodeVerStatus(CurrentSenior.currentSenior.getServiceProviders().getDriver().getVerStatus()));
-        watchmanSpinner.setSelection(decodeVerStatus(CurrentSenior.currentSenior.getServiceProviders().getWatchman().getVerStatus()));
-        tenantSpinner.setSelection(decodeVerStatus(CurrentSenior.currentSenior.getServiceProviders().getTenant().getVerStatus()));
-        servantSpinner.setSelection(decodeVerStatus(CurrentSenior.currentSenior.getServiceProviders().getServant().getVerStatus()));
-        sweeperSpinner.setSelection(decodeVerStatus(CurrentSenior.currentSenior.getServiceProviders().getSweeper().getVerStatus()));
-        carcleanerSpinner.setSelection(decodeVerStatus(CurrentSenior.currentSenior.getServiceProviders().getCarCleaner().getVerStatus()));
-        otherSpinner.setSelection(decodeVerStatus(CurrentSenior.currentSenior.getServiceProviders().getOthers().getVerStatus()));
+        ArrayAdapter<CharSequence> adapters2 = ArrayAdapter.createFromResource(getActivity(),
+                R.array.service_type, R.layout.spinner_item_text);
+        adapters2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        verStatus.setAdapter(adapters);
+        serType.setAdapter(adapters2);
+        addService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (TextUtils.isEmpty(name.getText()) || TextUtils.isEmpty(addr.getText()) || TextUtils.isEmpty(notes.getText())){
+                    Toast.makeText(getActivity(),"FIELDS CANNOT BE EMPTY!",Toast.LENGTH_SHORT).show();
+                }
+                else if (verStatus.getSelectedItemPosition() == 0){
+                    Toast.makeText(getActivity(),"SELECT VERIFICATION STATUS",Toast.LENGTH_SHORT).show();
+                }
+                else if (serType.getSelectedItemPosition() == 0){
+                    Toast.makeText(getActivity(),"SELECT SERVICE TYPE",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    ServiceProvider serviceProvider = new ServiceProvider(serType.getSelectedItem().toString(),name.getText().toString(),addr.getText().toString(),verStatus.getSelectedItem().toString(),notes.getText().toString());
+                    arrayList.add(serviceProvider);
+                    name.setText("");
+                    addr.setText("");
+                    notes.setText("");
+                    verStatus.setSelection(0);
+                    serType.setSelection(0);
+                    serviceAdapter = new ServiceAdapter(getContext(),arrayList);
+                    recyclerView.setAdapter(serviceAdapter);
+                    CurrentServiceProviderList.currentServiceList = arrayList;
+                }
+            }
+        });
         return view;
     }
-    public int decodeVerStatus(String s){
-        if(s.equals("")){
-            return 0;
-        }
-        if(s.equals("Verified")){
-            return 1;
-        }
-        if(s.equals("Not verified")){
-            return 2;
-        }
-        if(s.equals("Part-Time")){
-            return 3;
-        }
-        if(s.equals("Verification Pending")){
-            return 4;
-        }
-        else return 5;
-    }
+
 }

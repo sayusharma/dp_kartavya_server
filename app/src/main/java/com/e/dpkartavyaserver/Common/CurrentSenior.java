@@ -1,6 +1,5 @@
 package com.e.dpkartavyaserver.Common;
 
-import com.e.dpkartavyaserver.Model.Admin;
 import com.e.dpkartavyaserver.Model.VerifySnr;
 
 public class CurrentSenior {

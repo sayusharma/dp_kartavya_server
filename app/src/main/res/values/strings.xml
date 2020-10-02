@@ -1,18 +1,26 @@
 <resources>
     <string name="app_name">DP Kartavya Server</string>
-    <string name="daily_insights">Daily Insights</string>
+    <string name="daily_insights">Verification Insights</string>
+    <string name="visit_insights">Visit Insights</string>
+    <string name="visit_calender">Not Visited</string>
     <string name="sign_up">Sign Up Requests</string>
     <string name="police">Police Officers</string>
     <string name="senior">Senior Citizens</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="full_name">Full Name \u002A</string>
+    <string name="address">Address \u002A</string>
+    <string name="mob">Mobile Number \u002A</string>
+    <string name="gender">Gender \u002A</string>
+    <string name="DOB">Date of Birth \u002A</string>
     <string name="A">SECURITY CHECKS FOR HOUSE SAFETY</string>
-
     <string name="Aa">1. ACCESS CONTROL SECURITY</string>
+
+
     <string name="Aaa">A. Door Chain\t\t</string>
     <string name="Aab">B. Magic Eye/Door Viewer\t\t</string>
     <string name="Aac">C. Electronic Lock with LCD Screen System\t\t</string>
+
     <string name="Aad">D. House Burglar Alarm System\t\t</string>
     <string name="Aae">E. CCTV with recording\t\t</string>
     <string name="Aaf">F. Intruder Detection System\t\t</string>
@@ -33,4 +41,59 @@
     <string name="Be">E. Whether BEAT police officer is regularly visiting the house\t\t</string>
     <string name="Bf">F. Lighting in surrounding Area/Street Lighting\t\t</string>
     <string name="register"><u>REGISTER NOW</u></string>
+    <string-array name="service_type">
+        <item>Select Service Type</item>
+        <item>DRIVER</item>
+        <item>WATCHMAN</item>
+        <item>LANDLORD</item>
+        <item>SERVANT</item>
+        <item>TENANT</item>
+        <item>SWEEPER</item>
+        <item>CAR CLEANER</item>
+        <item>COOK</item>
+        <item>OTHER</item>
+    </string-array>
+    <string-array name="visited">
+        <item>Select Visited or Not</item>
+        <item>VISITED</item>
+        <item>NOT VISITED</item>
+    </string-array>
+    <string-array name="police_station">
+        <item>Select Police Station</item>
+        <item>ALL POLICE STATIONS</item>
+        <item>SAGAR PUR</item>
+        <item>PALAM VILLAGE</item>
+        <item>DELHI CANTT</item>
+        <item>VASANT VIHAR</item>
+        <item>SOUTH CAMPUS</item>
+        <item>R K PURAM</item>
+        <item>VASANT KUNJ NORTH</item>
+        <item>VASANT KUNJ SOUTH</item>
+        <item>KAPASHERA</item>
+        <item>KISHANGARH</item>
+        <item>S J ENCLAVE</item>
+        <item>SAROJANI NAGAR</item>
+    </string-array>
+    <string-array name="not_visited_type">
+        <item>Select Not Visited In</item>
+        <item>Last 1 month</item>
+        <item>Last 3 months</item>
+        <item>Last 6 months</item>
+        <item>Last 12 months</item>
+        <item>NEVER VISITED</item>
+    </string-array>
+    <string-array name="verification">
+        <item>Select Verification Status</item>
+        <item>Verified</item>
+        <item>Not verified</item>
+        <item>Part-Time</item>
+        <item>Verification Pending</item>
+        <item>NONE</item>
+    </string-array>
+    <string-array name="children_residence">
+        <item>Select Children Residence</item>
+        <item>In Delhi</item>
+        <item>Outside Delhi</item>
+        <item>Outside India</item>
+    </string-array>
 </resources>

@@ -35,14 +35,19 @@ public class DashActivity extends AppCompatActivity {
         final ProgressDialog p = new ProgressDialog(this);
         p.setMessage("Please Wait...");
         p.show();
+        p.setCancelable(false);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 user = dataSnapshot.child(SaveSharedPreference.getUserName(getApplicationContext())).getValue(Admin.class);
                 CurrentAdmin.currentAdmin = user;
-                Picasso.get()
-                        .load(CurrentAdmin.currentAdmin.getPhoto())
-                        .into(profile);
+                try {
+                    Picasso.get()
+                            .load(CurrentAdmin.currentAdmin.getPhoto())
+                            .into(profile);
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(),"FAILED TO LOAD PROFILE PHOTO",Toast.LENGTH_LONG).show();
+                }
                 p.dismiss();
                 //Toast.makeText(getApplicationContext(),""+CurrentUser.currentUser.getName(),Toast.LENGTH_LONG).show();
             }
@@ -55,6 +60,18 @@ public class DashActivity extends AppCompatActivity {
         });
 
     }
+    public void onClickVisitCalender(View view){
+        Intent intent = new Intent(DashActivity.this,VisitCalenderActivity.class);
+        startActivity(intent);
+    }
+    public void onClickNotVisited(View view){
+        Intent intent = new Intent(DashActivity.this,NotVisitedActivity.class);
+        startActivity(intent);
+    }
+    public void onClickVisitInsights(View view){
+        Intent intent = new Intent(DashActivity.this,VisitInsightsActivity.class);
+        startActivity(intent);
+    }
     public void onClickSeniorCitizens(View view){
         Intent intent = new Intent(DashActivity.this,SeniorCitizensActivity.class);
         startActivity(intent);
@@ -66,7 +83,7 @@ public class DashActivity extends AppCompatActivity {
         finish();
     }
     public void onClickDailyIn(View view){
-        Intent intent = new Intent(DashActivity.this,DailyInsightsActivity.class);
+        Intent intent = new Intent(DashActivity.this,VerificationInsightsActivity.class);
         startActivity(intent);
     }
     public void onClickSignUpRequests(View view){

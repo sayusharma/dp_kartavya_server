@@ -5,11 +5,133 @@
     android:background="@color/bgcolor"
     android:layout_height="match_parent"
     tools:context=".VisitsFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/myver"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="From"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="#1f2144"
+                android:padding="10dp"/>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/from_my_visit"
+                    android:hint="Select From Date"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textColorHint="#bdbdbd"
+                    android:paddingStart="16sp"
+                    android:layout_marginStart="16dp"
+                    android:enabled="false"
+                    android:textColor="#000000"
+                    android:background="@drawable/edit_text_design_off"
+                    android:padding="2dp"/>
+                <ImageView
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="24dp"
+                    android:id="@+id/from_my_visit_relative"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_calendar" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="  To  "
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="#1f2144"
+                android:padding="10dp"/>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/to_my_visit"
+                    android:hint="Select To Date"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textColorHint="#bdbdbd"
+                    android:paddingStart="16sp"
+                    android:layout_marginStart="16dp"
+                    android:enabled="false"
+                    android:textColor="#000000"
+                    android:background="@drawable/edit_text_design_off"
+                    android:padding="2dp"/>
+                <ImageView
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="24dp"
+                    android:id="@+id/to_my_visit_relative"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_calendar" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/open_sans_semibold"
+            android:id="@+id/myVisitApply"
+            android:padding="8dp"
+            android:text="Apply Changes"
+            android:textAllCaps="false"
+            android:textColor="@color/bgcolor"
+            android:textSize="14sp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="@color/colorPrimary"
+                android:text="TOTAL VISITS : "
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="14sp"
+                android:id="@+id/totalMyVisits"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_margin="5dp"
+        android:layout_below="@id/myver"
         android:id="@+id/visitRecycler"
         android:layout_height="match_parent"/>
 
